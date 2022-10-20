@@ -1,0 +1,10 @@
+.github/
+.gradle/
+.idea/
+build/
+gradle/wrapper/
+.gitignore
+_config.yml
+*.md
+gradlew*
+LICENSE
