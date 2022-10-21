@@ -25,7 +25,7 @@ java {
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     // GraalVM 22.2 supports up to Java 17
     sourceCompatibility = '17'
     targetCompatibility = '17'
@@ -37,11 +37,13 @@ application {
 }
 
 graalvmNative {
-    binaries.all {
+    binaries.configureEach {
         resources.includedPatterns.add('logback.xml')
         buildArgs.addAll('--static', '--libc=musl')
         // Reflection workarounds
-        buildArgs.add('--initialize-at-build-time=ch.qos.logback')
+        //buildArgs.add('--initialize-at-run-time=com.fasterxml.jackson')
+        buildArgs.add('--report-unsupported-elements-at-runtime')
+        buildArgs.add('--initialize-at-build-time=ch.qos.logback,org.telegram.telegrambots.meta.api.objects')
         buildArgs.add('-H:ReflectionConfigurationFiles=../../../src/main/resources/reflection-config.json')
     }
 }
