@@ -62,8 +62,7 @@ public class Stickerify extends TelegramLongPollingBot {
 	}
 
 	private void answerFile(TelegramRequest request) {
-		// TODO: change to HashSet.newHashSet(2) as soon as Gradle supports Java 19
-		Set<Path> pathsToDelete = new HashSet<>(2);
+		Set<Path> pathsToDelete = HashSet.newHashSet(2);
 
 		GetFile getFile = new GetFile(request.getFileId());
 
