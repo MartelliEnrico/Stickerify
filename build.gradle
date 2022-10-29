@@ -40,8 +40,8 @@ graalvmNative {
             restrictToProjectDependencies = false
         }
         buildArgs.addAll('--static', '--libc=musl')
-        // Reflection workarounds
         buildArgs.add('--report-unsupported-elements-at-runtime')
         buildArgs.add('-H:ReflectionConfigurationFiles=../../../reflection-config.json')
+        buildArgs.add('-H:JNIConfigurationFiles=../../../jni-config.json')
     }
 }
